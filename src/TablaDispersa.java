@@ -14,13 +14,13 @@ public class TablaDispersa {
         }
     }
 
-    public int direccion(String clave) {
+    public int colisiones(String clave) {
         int i = 0, p;
         long d;
         d = transformaCadena(clave);
         p = (int) (d % TAMTABLA);
 
-        while ((tabla[p] != null) && !tabla[p].getCodigo().equals(clave)) {
+        while ((tabla[p] != null) && !tabla[p].id.equals(clave)) {
             i++;
             p = p + i * i;
             p = p % TAMTABLA;
@@ -43,9 +43,7 @@ public class TablaDispersa {
         return d;
     }
 
-    public void insertar(CasaRural r) {
-        int posicion;
-        posicion = direccion(r.getCodigo());
+    public void insertar(CasaRural r, int posicion) {
         tabla[posicion] = r;
         numElementos++;
         factorCarga = (double) (numElementos) / TAMTABLA;
@@ -59,7 +57,7 @@ public class TablaDispersa {
     public CasaRural buscar(String clave) {
         CasaRural pr;
         int posicion;
-        posicion = direccion(clave);
+        posicion = colisiones(clave);
         pr = tabla[posicion];
 
         if (pr != null) {
@@ -70,11 +68,25 @@ public class TablaDispersa {
         return pr;
     }
 
+    public void muestraCodigo() {
+        for (int j = 0; j < TAMTABLA; j++) {
+            if (tabla[j] != null && tabla[j].bandera == 1) {
+                System.out.println("CASA N° " + j + 1 + ". \n");
+                System.out.println("CODIGO: " + tabla[j].id + ".\n");
+                System.out.println("POBLACION: " + tabla[j].poblacion + ".\n");
+                System.out.println("DIRECCION: " + tabla[j].direccion + ".\n");
+                System.out.println("PRECIO POR DIA: " + tabla[j].precioxdia + ".\n\n");
+            }
+        }
+
+    }
+
     public void eliminar(String clave) {
-        int posicion;
-        posicion = direccion(clave);
-        if (tabla[posicion].esAlta == true) {
-            tabla[posicion].esAlta = false;
+        int j;
+        j = colisiones(clave);
+        if (tabla[j] != null && tabla[j].bandera == 1) {
+            tabla[j].bandera = 0;
+            tabla[j].esAlta = false;
             System.out.println("La casa se dio de baja con exito!\n");
         } else {
             System.out.println("No se pudo dar de baja la casa.\n");
