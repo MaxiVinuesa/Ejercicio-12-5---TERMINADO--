@@ -22,21 +22,26 @@ public class CasaRural {
         int n = 10;
         for (int i = this.lugar; i < n; i++) {
             if (this.control == 0) {
-                System.out.println("Usted va a ingresar al cliente N° " + i + "\n");
+                System.out.println("Usted va a ingresar al cliente N° " + i + 1 + "\n");
                 System.out.println("Ingrese el codigo.\n");
                 this.id = scc.nextLine();
+                scc.nextLine();
 
                 System.out.println("Ingrese la direccion\n");
                 this.direccion = scc.nextLine();
+                scc.nextLine();
 
                 System.out.println("Ingrese el numero de habitaciones\n");
                 this.numHabitacion = scc.nextInt();
+                scc.nextLine();
 
                 System.out.println("Ingrese el precio por dia\n");
                 this.precioxdia = scc.nextDouble();
+                scc.nextLine();
 
                 System.out.println("Ingrese la poblacion\n");
                 this.poblacion = scc.nextInt();
+                scc.nextLine();
 
                 Dispersion d = new Dispersion();
 
@@ -61,10 +66,10 @@ public class CasaRural {
     }
 
     public void muestraCodigo() {
-        System.out.println("CASA RURAL" + this.id + "\n");
-        System.out.println("POBLACION" + this.poblacion + "\n");
-        System.out.println("DIRECCION" + this.direccion + "\n");
-        System.out.println("PRECIO POR DIA" + this.precioxdia + "\n");
+        System.out.println("CASA RURAL: " + this.id + ".\n");
+        System.out.println("POBLACION: " + this.poblacion + ".\n");
+        System.out.println("DIRECCION: " + this.direccion + ".\n");
+        System.out.println("PRECIO POR DIA: " + this.precioxdia + ".\n");
     }
 
 }

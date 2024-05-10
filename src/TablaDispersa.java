@@ -73,8 +73,11 @@ public class TablaDispersa {
     public void eliminar(String clave) {
         int posicion;
         posicion = direccion(clave);
-        if (tabla[posicion] != null) {
+        if (tabla[posicion].esAlta == true) {
             tabla[posicion].esAlta = false;
+            System.out.println("La casa se dio de baja con exito!\n");
+        } else {
+            System.out.println("No se pudo dar de baja la casa.\n");
         }
     }
 }

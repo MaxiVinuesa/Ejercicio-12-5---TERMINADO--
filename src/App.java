@@ -6,6 +6,7 @@ public class App {
 
         Scanner scc = new Scanner(System.in);
         CasaRural casas = new CasaRural();
+        Pausa pausas = new Pausa();
 
         TablaDispersa tablas = new TablaDispersa();
 
@@ -27,10 +28,13 @@ public class App {
                     break;
 
                 case 2:
+                    System.out.println("Ingrese la id de la casa a eliminar.\n");
+                    id = scc.nextLine();
                     tablas.eliminar(id);
                     break;
                 case 3:
                     casas.muestraCodigo();
+                    pausas.pausar();
                     break;
                 case 4:
                     System.out.println("Gracias por utilizar el programa!\n");
